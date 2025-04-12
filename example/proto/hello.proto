@@ -4,7 +4,7 @@ package hello;
 
 option go_package = "/hello";
 
-import "proto/annotations.proto";
+import "example/proto/annotations.proto";
 
 message HelloRequest {
   string msg = 1;
@@ -17,7 +17,8 @@ message HelloResponse {
 service HelloService {
   rpc Hello(HelloRequest) returns (HelloResponse) {
     option (google.api.http) = {
-      get: "/hello"
+      post: "/hello"
+      body: "*"
     };
   }
 }
