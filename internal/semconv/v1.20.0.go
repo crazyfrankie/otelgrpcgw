@@ -12,11 +12,12 @@ import (
 	"net/http"
 	"slices"
 
-	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/internal/semconvutil"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/metric/noop"
 	semconv "go.opentelemetry.io/otel/semconv/v1.20.0"
+
+	"github.com/crazyfrankie/otelgrpcgw/internal/semconvutil"
 )
 
 type OldHTTPServer struct{}
