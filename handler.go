@@ -43,7 +43,11 @@ func defaultHandlerFormatter(operation string, _ *http.Request) string {
 	return operation
 }
 
-func NewMiddleware(operation string, opts ...Option) runtime.Middleware {
+func NewHandler(next runtime.HandlerFunc, operation string, opts ...Option) runtime.HandlerFunc {
+	return NewMiddleware(operation, opts...)(next)
+}
+
+func NewMiddleware(operation string, opts ...Option) func(runtime.HandlerFunc) runtime.HandlerFunc {
 	h := handler{
 		operation: operation,
 	}
